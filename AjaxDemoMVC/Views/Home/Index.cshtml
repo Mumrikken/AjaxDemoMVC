@@ -4,25 +4,13 @@
 
 <div class="text-center">
     <form id="nameForm">
-        <input type="text" id="nameInput" placeholder="Enter a name"/>
+        <input type="text" id="nameInput" placeholder="Enter a name" required/>
         <button type="submit">Submit</button>
     </form>
-    <div id="nameDisplay"></div>
+    @Html.Partial("_NameDisplayPartial")
 </div>
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#nameForm").submit(function(e) {
-                e.preventDefault();
-                
-                let name = $("#nameInput").val();
-
-                $.post("/Home/SubmitName", { name: name }, function(response) {
-                    $("#nameDisplay").text(response.name);
-                });
-            });
-        });
-    </script>
+    <script src="~/js/AJAXAddNames.js"></script>
 }
